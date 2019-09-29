@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repos.MonthlyRepo">
+    <insert id="createSchedule">
+        INSERT INTO
+        monthly(title
+                ,explanation
+                ,start_schedule
+                ,end_schedule
+                ,start_time
+                ,end_time
+                ,repeat_month
+                ,all_day)
+        VALUES(#{title}
+                ,#{explanation}
+                ,#{start_schedule}
+                ,#{end_schedule}
+                ,#{start_time}
+                ,#{end_time}
+                ,#{repeat_month}
+                ,#{repeat_month})
+    </insert>
+
+</mapper>
