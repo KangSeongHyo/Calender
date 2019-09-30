@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -16,6 +16,11 @@
     <script type="application/javascript" src="js/mainJS.js"></script>
 </head>
 <body>
+<div th:each="sch:${scheduleMonthlyList}">
+    <div th:text="${sch.getTitle()}"></div>
+</div>s
+
+<div th:text="${Test}">하이이이</div>
     <div class="calendar-container">
         <div class="calendar-header">
             <button class="btn btn-light">Today</button>
@@ -57,6 +62,9 @@
                         <div class="day-name">금</div>
                         <div class="day-name">토</div>
                     </div>
+
+
+
                     <div class="week">
                         <div class="day">
                             <h3 class="day-label">1</h3>
@@ -232,7 +240,7 @@
                                         <label class="col-form-label">일정 시작 날짜</label>
                                         <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input"
-                                                   data-target="#datetimepicker1" name="start_schedule"/>
+                                                   data-target="#datetimepicker1" name="startSchedule"/>
                                             <div class="input-group-append" data-target="#datetimepicker1"
                                                  data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="material-icons">
@@ -247,7 +255,7 @@
                                         <label class="col-form-label">일정 시작 시간</label>
                                         <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input"
-                                                   data-target="#datetimepicker2" name="start_time"/>
+                                                   data-target="#datetimepicker2" name="startTime"/>
                                             <div class="input-group-append" data-target="#datetimepicker2"
                                                  data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="material-icons">
@@ -264,7 +272,7 @@
                                         <label class="col-form-label">일정 종료 날짜</label>
                                         <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input"
-                                                   data-target="#datetimepicker3" name="end_schedule"/>
+                                                   data-target="#datetimepicker3" name="endSchedule"/>
                                             <div class="input-group-append" data-target="#datetimepicker3"
                                                  data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="material-icons">
@@ -279,7 +287,7 @@
                                         <label class="col-form-label">일정 종료 시간</label>
                                         <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input"
-                                                   data-target="#datetimepicker4" name="end_time"/>
+                                                   data-target="#datetimepicker4" name="endTime"/>
                                             <div class="input-group-append" data-target="#datetimepicker4"
                                                  data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="material-icons">

@@ -17,12 +17,13 @@ $(document).ready(function(){
             url : "/monthly/register",
             data : $("#monthly_day_form").serialize(),
             method : "POST",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             dataType : "JSON"
         }).done(function(result) {
-            alert("qefqe");
             $('#registerSchedule').modal('hide');
             location.reload();
         }).fail(function (xhr,status) {
+
         });
     });
 
