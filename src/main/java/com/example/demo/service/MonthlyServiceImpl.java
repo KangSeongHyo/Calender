@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class MonthlyServiceImpl implements MonthlyService{
@@ -52,8 +55,8 @@ public class MonthlyServiceImpl implements MonthlyService{
     }
 
     @Override
-    public List<MonthlyDTO> scheduleMonthlyList(String year,String month) {
-
+    public Map<String,Object> scheduleMonthlyList(String year, String month) {
+        Map<String,Object> resultMap = new HashMap<>();
         if(month.equals("")||year.equals("")){
             Date today = new Date();
             SimpleDateFormat dateFormatYear = new SimpleDateFormat("YYYY");
@@ -61,8 +64,15 @@ public class MonthlyServiceImpl implements MonthlyService{
             year = dateFormatYear.format(today);
             month = dateFormatMonth.format(today);
         }
+        List<MonthlyDTO> scheduleList = monthlyRepo.getScheduleList(year,month);
+        List<Integer> dayList = scheduleList
+                                    .stream()
+                                    .map(dto->Integer.parseInt(dto.getStart_day()))
+                                    .collect(Collectors.toList());
+        resultMap.put("scheduleList",scheduleList);
+        resultMap.put("dayList",dayList);
 
-        return monthlyRepo.getScheduleList(year,month);
+        return resultMap;
     }
 
     @Override

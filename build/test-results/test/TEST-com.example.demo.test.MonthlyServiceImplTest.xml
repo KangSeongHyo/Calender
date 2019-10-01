@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.demo.test.MonthlyServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-09-30T14:37:23" hostname="DESKTOP-L45GBMG" time="1.14">
+<testsuite name="com.example.demo.test.MonthlyServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-01T12:24:45" hostname="DESKTOP-L45GBMG" time="1.147">
   <properties/>
-  <testcase name="scheduleMonthlyListTest" classname="com.example.demo.test.MonthlyServiceImplTest" time="1.14"/>
-  <system-out><![CDATA[20190930 23:37:20.017 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.test.MonthlyServiceImplTest], using SpringBootContextLoader 
-20190930 23:37:20.027 [Test worker] INFO o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.example.demo.test.MonthlyServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}. 
-20190930 23:37:20.028 [Test worker] INFO o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.test.MonthlyServiceImplTest]: MonthlyServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
-20190930 23:37:20.169 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.test.MonthlyServiceImplTest 
-20190930 23:37:20.288 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] 
-20190930 23:37:20.313 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6224706f, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6f4565d3, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@76ee4908, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@747e9426, org.springframework.test.context.support.DirtiesContextTestExecutionListener@359835ce, org.springframework.test.context.transaction.TransactionalTestExecutionListener@71b7a553, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@75950464, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@75ca6154, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1081c66, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4d59ac29, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@10b237c2, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@36543441] 
+  <testcase name="regScheduleTest" classname="com.example.demo.test.MonthlyServiceImplTest" time="1.147"/>
+  <system-out><![CDATA[20191001 21:24:41.482 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.test.MonthlyServiceImplTest], using SpringBootContextLoader 
+20191001 21:24:41.494 [Test worker] INFO o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.example.demo.test.MonthlyServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}. 
+20191001 21:24:41.495 [Test worker] INFO o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.test.MonthlyServiceImplTest]: MonthlyServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
+20191001 21:24:41.653 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.test.MonthlyServiceImplTest 
+20191001 21:24:41.790 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] 
+20191001 21:24:41.817 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@747e9426, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@359835ce, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@71b7a553, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@75950464, org.springframework.test.context.support.DirtiesContextTestExecutionListener@75ca6154, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1081c66, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4d59ac29, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@10b237c2, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@36543441, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@777ef5c1, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@77c637e3, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@764b12fe] 
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -17,56 +17,48 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.1.4.RELEASE)
 
-20190930 23:37:20.651 [Test worker] INFO c.e.d.t.MonthlyServiceImplTest - Starting MonthlyServiceImplTest on DESKTOP-L45GBMG with PID 12080 (started by 강성효 in C:\Users\강성효\Desktop\demo-spring-boot) 
-20190930 23:37:20.652 [Test worker] INFO c.e.d.t.MonthlyServiceImplTest - No active profile set, falling back to default profiles: default 
-20190930 23:37:23.046 [Test worker] INFO o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
-20190930 23:37:23.389 [Test worker] INFO o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index 
-20190930 23:37:23.734 [Test worker] INFO c.e.d.t.MonthlyServiceImplTest - Started MonthlyServiceImplTest in 3.368 seconds (JVM running for 4.804) 
-20190930 23:37:24.010 [Test worker] INFO c.z.h.HikariDataSource - HikariPool-1 - Starting... 
-20190930 23:37:24.742 [Test worker] INFO c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
-20190930 23:37:24.800 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
-1. SELECT
-            title
-            ,explanation
-            ,start_year
-            ,start_month
-            ,start_day
-            ,end_year
-            ,end_month
-            ,end_day
-            ,start_hour
-            ,start_minute
-            ,start_sign
-            ,end_hour
-            ,end_minute
-            ,end_sign
-            ,repeat_month
-            ,all_day
-        FROM
-            monthly
-        WHERE
-            start_year LIKE '2019' AND start_month LIKE '09'
-        ORDER BY
-            start_year
-            ,start_month
-            ,start_day
-            ,start_hour
-            ,start_minute
-            ,start_sign
- {executed in 15 msec} 
-20190930 23:37:24.866 [Test worker] INFO j.resultsettable - 
-|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
-|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
-|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
-|제목    |설명          |2019       |09          |20        |2019     |09        |20      |8          |14           |AM         |10       |14         |PM       |false        |false   |
-|제목    |설명          |2019       |09          |20        |2019     |09        |20      |8          |14           |AM         |10       |14         |PM       |false        |false   |
-|제목    |설명          |2019       |09          |20        |2019     |09        |20      |8          |14           |AM         |10       |14         |PM       |false        |false   |
-|제목    |설명          |2019       |09          |20        |2019     |09        |20      |8          |14           |AM         |10       |14         |PM       |false        |false   |
-|제목    |설명          |2019       |09          |20        |2019     |09        |20      |8          |14           |AM         |10       |14         |PM       |false        |false   |
-|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
- 
-20190930 23:37:24.880 [Test worker] INFO c.e.d.t.MonthlyServiceImplTest - MonthlyDTO{title='제목', explanation='설명', start_year='null', start_month='null', start_day='null', end_year='null', end_month='null', end_day='null', start_hour='null', start_minute='null', start_sign='null', end_hour='null', end_minute='null', end_sign='null', repeat_month=false, all_day=false} 
-20190930 23:37:24.880 [Test worker] INFO c.e.d.t.MonthlyServiceImplTest - 한글 
+20191001 21:24:42.194 [Test worker] INFO c.e.d.t.MonthlyServiceImplTest - Starting MonthlyServiceImplTest on DESKTOP-L45GBMG with PID 13960 (started by 강성효 in C:\Users\강성효\Desktop\demo-spring-boot) 
+20191001 21:24:42.196 [Test worker] INFO c.e.d.t.MonthlyServiceImplTest - No active profile set, falling back to default profiles: default 
+20191001 21:24:44.886 [Test worker] INFO o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
+20191001 21:24:45.217 [Test worker] INFO o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index 
+20191001 21:24:45.573 [Test worker] INFO c.e.d.t.MonthlyServiceImplTest - Started MonthlyServiceImplTest in 3.695 seconds (JVM running for 5.375) 
+20191001 21:24:45.862 [Test worker] INFO c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+20191001 21:24:46.675 [Test worker] INFO c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+20191001 21:24:46.729 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. INSERT INTO
+        monthly(title
+                ,explanation
+                ,start_year
+                ,start_month
+                ,start_day
+                ,end_year
+                ,end_month
+                ,end_day
+                ,start_hour
+                ,start_minute
+                ,start_sign
+                ,end_hour
+                ,end_minute
+                ,end_sign
+                ,repeat_month
+                ,all_day)
+        VALUES('테스트 일정'
+                ,'설명'
+                ,'2019'
+                ,'10'
+                ,'01'
+                ,'2019'
+                ,'10'
+                ,'01'
+                ,'8'
+                ,'14'
+                ,'AM'
+                ,'10'
+                ,'14'
+                ,'PM'
+                ,0
+                ,0)
+ {executed in 9 msec} 
 ]]></system-out>
   <system-err><![CDATA[Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
 ]]></system-err>

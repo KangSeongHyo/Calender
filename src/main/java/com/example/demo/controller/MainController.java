@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MainController {
@@ -27,12 +28,10 @@ public class MainController {
     private ModelAndView index(@RequestParam(defaultValue = "") String year, @RequestParam(defaultValue = "") String month) {
         logger.info("year = {}, month = {} ",year,month);
         ModelAndView modelAndView = new ModelAndView();
-        List<MonthlyDTO> scheduleMonthlyList = monthlyService.scheduleMonthlyList(year,month);
-        modelAndView.addObject("scheduleMonthlyList",scheduleMonthlyList);
+        Map<String,Object> resultMap = monthlyService.scheduleMonthlyList(year,month);
+        modelAndView.addObject("scheduleList",resultMap.get("scheduleList"));
+        modelAndView.addObject("dayList",resultMap.get("dayList"));
         modelAndView.setViewName("index");
-        modelAndView.addObject("Test","하이요");
-
         return modelAndView;
     }
-
 }

@@ -1,6 +1,5 @@
 package com.example.demo.test;
 import com.example.demo.domain.MonthlyDTO;
-import com.example.demo.repos.MonthlyRepo;
 import com.example.demo.service.MonthlyService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -35,10 +34,10 @@ public class MonthlyServiceImplTest {
         int res = 0;
         MonthlyDTO monthlyDTO = new MonthlyDTO();
 
-        monthlyDTO.setTitle("제목");
+        monthlyDTO.setTitle("테스트 일정");
         monthlyDTO.setExplanation("설명");
-        monthlyDTO.setStartSchedule("09/20/2019");
-        monthlyDTO.setEndSchedule("09/20/2019");
+        monthlyDTO.setStartSchedule("10/01/2019");
+        monthlyDTO.setEndSchedule("10/01/2019");
         monthlyDTO.setStartTime("8:14 AM");
         monthlyDTO.setEndTime("10:14 PM");
         monthlyDTO.setAll_day(false);

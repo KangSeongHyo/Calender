@@ -15,12 +15,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script type="application/javascript" src="js/mainJS.js"></script>
 </head>
-<body>
-<div th:each="sch:${scheduleMonthlyList}">
-    <div th:text="${sch.getTitle()}"></div>
-</div>s
 
-<div th:text="${Test}">하이이이</div>
+<body>
     <div class="calendar-container">
         <div class="calendar-header">
             <button class="btn btn-light">Today</button>
@@ -50,9 +46,12 @@
             </ul>
         </div>
 
+
+
         <div class="tab-content">
             <div class="tab-pane active show" id="month" role="tabpanel" aria-labelledby="tab-month">
                 <div class="monthly-calendar">
+
                     <div class="week-day">
                         <div class="day-name">일</div>
                         <div class="day-name">월</div>
@@ -64,124 +63,70 @@
                     </div>
 
 
+                    <div class="week">
+                      <th:block th:each="num,index : ${#numbers.sequence(1,7)}">
+                               <div class="day">
+                                    <h3 class="day-label" th:text="${num}"></h3>
+                                    <div th:if="${#lists.contains(dayList,num)}"
+                                            class="event event-start event-end" data-span="1" data-toggle="popover"
+                                         data-html="true"
+                                         th:attr="data-content='<div class=content-line><div class=event-marking></div>'
+                                                   +'<div class=title>'
+                                                   +'<h5>'+${scheduleList[__index.index__].title}+'</h5>'
+                                                   +'<h7 class=reservation>'
+                                                   +${scheduleList[__index.count__].start_year}+'년 '
+                                                   +${scheduleList[__index.index__].start_month}+'월 '
+                                                   +${scheduleList[__index.index__].start_day}+'일 – '
+                                                   +${scheduleList[__index.index__].end_day}+'일 </br><span class=reservation-time> '
+                                                   +${scheduleList[__index.index__].start_sign}+' '
+                                                   +${scheduleList[__index.index__].start_hour}+' : '
+                                                   +${scheduleList[__index.index__].start_minute}+' ~ '
+                                                   +${scheduleList[__index.index__].end_sign}+' '
+                                                   +${scheduleList[__index.index__].end_hour}+' : '
+                                                   +${scheduleList[__index.index__].end_minute}+ '</span></div>'
+                                                   +'</div><div class=content-line><i class=material-icons>'
+                                                   +'notes</i><div class=title><h7 class=reservation>'
+                                                   +${scheduleList[__index.index__].explanation}+'</div>'">일반 일정 3
+                                    </div>
+                                </div>
+                        </th:block>
+                    </div>
+                    <div class="week">
+                      <th:block th:each="num,index : ${#numbers.sequence(8,14)}">
+                               <div class="day">
+                                    <h3 class="day-label" th:text="${num}"></h3>
+                                    <div th:if="${#lists.contains(dayList,num)}"
+                                            class="event event-start event-end" data-span="1" data-toggle="popover"
+                                         data-html="true"
+                                         th:attr="data-content='<div class=content-line><div class=event-marking></div>'
+                                                   +'<div class=title>'
+                                                   +'<h5>'+${scheduleList[__index.index__].title}+'</h5>'
+                                                   +'<h7 class=reservation>'
+                                                   +${scheduleList[__index.count__].start_year}+'년 '
+                                                   +${scheduleList[__index.index__].start_month}+'월 '
+                                                   +${scheduleList[__index.index__].start_day}+'일 – '
+                                                   +${scheduleList[__index.index__].end_day}+'일 </br><span class=reservation-time> '
+                                                   +${scheduleList[__index.index__].start_sign}+' '
+                                                   +${scheduleList[__index.index__].start_hour}+' : '
+                                                   +${scheduleList[__index.index__].start_minute}+' ~ '
+                                                   +${scheduleList[__index.index__].end_sign}+' '
+                                                   +${scheduleList[__index.index__].end_hour}+' : '
+                                                   +${scheduleList[__index.index__].end_minute}+ '</span></div>'
+                                                   +'</div><div class=content-line><i class=material-icons>'
+                                                   +'notes</i><div class=title><h7 class=reservation>'
+                                                   +${scheduleList[__index.index__].explanation}+'</div>'">일반 일정 3
+                                    </div>
+                                </div>
+                        </th:block>
+                    </div>
 
-                    <div class="week">
-                        <div class="day">
-                            <h3 class="day-label">1</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">2</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">3</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">4</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">5</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">6</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">7</h3>
-                        </div>
-                    </div>
-                    <div class="week">
-                        <div class="day">
-                            <h3 class="day-label">8</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">9</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">10</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">11</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">12</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">13</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">14</h3>
-                        </div>
-                    </div>
-                    <div class="week">
-                        <div class="day">
-                            <h3 class="day-label">15</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">16</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">17</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">18</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">19</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">20</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">21</h3>
-                        </div>
-                    </div>
-                    <div class="week">
-                        <div class="day">
-                            <h3 class="day-label">22</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">23</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">24</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">25</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">26</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">27</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">28</h3>
-                        </div>
-                    </div>
-                    <div class="week">
-                        <div class="day">
-                            <h3 class="day-label">29</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">30</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">1</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">2</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">3</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">4</h3>
-                        </div>
-                        <div class="day">
-                            <h3 class="day-label">5</h3>
-                        </div>
+
+
                     </div>
                 </div>
             </div>
+
+
             <div class="tab-pane" id="day" role="tabpanel" aria-labelledby="tab-day">
                 <div class="daily-calendar"><span class="day-name">3일 화요일</span>
                     <div class="event-consecutive event-start event-end" data-toggle="popover"
