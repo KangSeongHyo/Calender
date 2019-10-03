@@ -24,7 +24,7 @@ public class MonthlyServiceImpl implements MonthlyService{
 
     @Override
     public int regSchedule(MonthlyDTO monthlyDTO) {
-        int res;
+        int res = 0;
         String[] sSchedule = dateParse(monthlyDTO.getStartSchedule());
         String[] eSchedule = dateParse(monthlyDTO.getEndSchedule());
         String[] sTime = timeParse(monthlyDTO.getStartTime());
@@ -51,26 +51,53 @@ public class MonthlyServiceImpl implements MonthlyService{
         return res;
     }
 
+    /**
+     *
+     * @param calendarDTO
+     * @return
+     */
     @Override
     public Map<String,Object> scheduleMonthlyList(CalendarDTO calendarDTO) {
         Map<String,Object> resultMap = new HashMap<>();
-        checkYearAndMonth(calendarDTO);
+        initCalendar(calendarDTO);
 
         List<CalendarDTO> scheduleList = monthlyRepo.getSchedlueStatus(calendarDTO);
         List<CalendarDTO>[] weekList = dayOfWeekList(scheduleList,startDayOfMonth(calendarDTO));
 
-        resultMap.put("scheduleList",scheduleList);
         resultMap.put("weekList",weekList);
         return resultMap;
     }
 
+    @Override
+    public int initCalendar(CalendarDTO calendarDTO) {
+        checkYearAndMonth(calendarDTO);
+        int lastDay = lastDayOfMonth(Integer.parseInt(calendarDTO.getMonth()));
+
+        if(monthlyRepo.getCountCalender(calendarDTO) == 0){
+            List<CalendarDTO> initDayOfMonthList = new ArrayList<>();
+            for(int day = 1; day <= lastDay; day++){
+                initDayOfMonthList.add(new CalendarDTO(calendarDTO.getYear()
+                        ,calendarDTO.getMonth()
+                        ,String.format("%02d", day)));
+            }
+
+            monthlyRepo.createMonthCalendar(initDayOfMonthList);
+        }
+        return 0;
+    }
+
+    /**
+     *
+     * @param scheduleList
+     * @param stratDay
+     * @return
+     */
     @Override
     public List<CalendarDTO>[] dayOfWeekList(List<CalendarDTO> scheduleList,int stratDay) {
         List<CalendarDTO>[] weekList = new ArrayList[5];
         int count = stratDay;
         int week = 0;
         int idx = 0;
-
         for(int i = 0; i < 5; i++){
             weekList[i] = new ArrayList<>();
         }
@@ -91,24 +118,6 @@ public class MonthlyServiceImpl implements MonthlyService{
         return weekList;
     }
 
-    @Override
-    public int initCalendar(CalendarDTO calendarDTO) {
-        checkYearAndMonth(calendarDTO);
-        int lastDay = lastDayOfMonth(Integer.parseInt(calendarDTO.getMonth()));
-
-        if(monthlyRepo.getCountCalender(calendarDTO) == 0){
-            List<CalendarDTO> initDayOfMonthList = new ArrayList<>();
-            for(int day = 1; day <= lastDay; day++){
-                initDayOfMonthList.add(new CalendarDTO(calendarDTO.getYear()
-                                                        ,calendarDTO.getMonth()
-                                                        ,String.format("%02d", day)));
-            }
-
-            monthlyRepo.createMonthCalendar(initDayOfMonthList);
-        }
-        return 0;
-    }
-
 
     @Override
     public void checkYearAndMonth(CalendarDTO calendarDTO) {
@@ -124,6 +133,7 @@ public class MonthlyServiceImpl implements MonthlyService{
             calendarDTO.setYear(year);
             calendarDTO.setMonth(month);
         }
+
     }
 
 
