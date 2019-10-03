@@ -1,4 +1,5 @@
 package com.example.demo.test;
+import com.example.demo.domain.CalendarDTO;
 import com.example.demo.domain.MonthlyDTO;
 import com.example.demo.service.MonthlyService;
 import org.junit.Assert;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
+import java.util.Calendar;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -22,11 +24,6 @@ public class MonthlyServiceImplTest {
 
     @Test
     public void scheduleMonthlyListTest(){
-        List<MonthlyDTO> scheduleList = monthlyService.scheduleMonthlyList("","");
-        logger.info(scheduleList.get(0).toString());
-        logger.info("한글");
-        Assert.assertNotEquals(0,scheduleList.size());
-        Assert.assertNotNull(scheduleList);
     }
 
     @Test
@@ -36,8 +33,8 @@ public class MonthlyServiceImplTest {
 
         monthlyDTO.setTitle("테스트 일정");
         monthlyDTO.setExplanation("설명");
-        monthlyDTO.setStartSchedule("10/01/2019");
-        monthlyDTO.setEndSchedule("10/01/2019");
+        monthlyDTO.setStartSchedule("10/03/2019");
+        monthlyDTO.setEndSchedule("10/03/2019");
         monthlyDTO.setStartTime("8:14 AM");
         monthlyDTO.setEndTime("10:14 PM");
         monthlyDTO.setAll_day(false);
@@ -48,5 +45,15 @@ public class MonthlyServiceImplTest {
         Assert.assertEquals(1,res);
     }
 
+    @Test
+    public void initCalendarTest(){
+        CalendarDTO calendarDTO = new CalendarDTO();
+        int res = 0;
+
+        res = monthlyService.initCalendar(calendarDTO);
+
+
+        Assert.assertNotEquals(0,res);
+    }
 
 }

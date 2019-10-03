@@ -1,7 +1,9 @@
 package com.example.demo.domain;
 
 import com.example.demo.common.DateTimePicker;
+import org.apache.ibatis.type.Alias;
 
+@Alias("MonthlyDTO")
 public class MonthlyDTO extends DateTimePicker {
     private String title;
     private String explanation;

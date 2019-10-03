@@ -46,12 +46,9 @@
             </ul>
         </div>
 
-
-
         <div class="tab-content">
             <div class="tab-pane active show" id="month" role="tabpanel" aria-labelledby="tab-month">
                 <div class="monthly-calendar">
-
                     <div class="week-day">
                         <div class="day-name">일</div>
                         <div class="day-name">월</div>
@@ -62,101 +59,161 @@
                         <div class="day-name">토</div>
                     </div>
 
-
-                    <div class="week">
-                      <th:block th:each="num,index : ${#numbers.sequence(1,7)}">
-                               <div class="day">
-                                    <h3 class="day-label" th:text="${num}"></h3>
-                                    <div th:if="${#lists.contains(dayList,num)}"
-                                            class="event event-start event-end" data-span="1" data-toggle="popover"
-                                         data-html="true"
-                                         th:attr="data-content='<div class=content-line><div class=event-marking></div>'
-                                                   +'<div class=title>'
-                                                   +'<h5>'+${scheduleList[__index.index__].title}+'</h5>'
-                                                   +'<h7 class=reservation>'
-                                                   +${scheduleList[__index.count__].start_year}+'년 '
-                                                   +${scheduleList[__index.index__].start_month}+'월 '
-                                                   +${scheduleList[__index.index__].start_day}+'일 – '
-                                                   +${scheduleList[__index.index__].end_day}+'일 </br><span class=reservation-time> '
-                                                   +${scheduleList[__index.index__].start_sign}+' '
-                                                   +${scheduleList[__index.index__].start_hour}+' : '
-                                                   +${scheduleList[__index.index__].start_minute}+' ~ '
-                                                   +${scheduleList[__index.index__].end_sign}+' '
-                                                   +${scheduleList[__index.index__].end_hour}+' : '
-                                                   +${scheduleList[__index.index__].end_minute}+ '</span></div>'
-                                                   +'</div><div class=content-line><i class=material-icons>'
-                                                   +'notes</i><div class=title><h7 class=reservation>'
-                                                   +${scheduleList[__index.index__].explanation}+'</div>'">일반 일정 3
-                                    </div>
+                    <div class="week" id="week1">
+                        <th:block th:each="sche:${weekList[0]}">
+                            <div class="day">
+                                <div th:if="sche.day == null" class="day-label"></div>
+                                <div th:unless="sche.day == null" class="day-label">[[${sche.day}]]</div>
+                                <div th:each=" list :${sche.scheduleList}"
+                                     class="event event-start event-end" data-span="1" data-toggle="popover"
+                                     data-html="true"
+                                     th:attr="data-content='<div class=content-line><div class=event-marking></div>'
+                                                       +'<div class=title>'
+                                                       +'<h5>'+${list.title}+'</h5>'
+                                                       +'<h7 class=reservation>'
+                                                       +${list.start_year}+'년 '
+                                                       +${list.start_month}+'월 '
+                                                       +${list.start_day}+'일 – '
+                                                       +${list.end_day}+'일 </br><span class=reservation-time> '
+                                                       +${list.start_sign}+' '
+                                                       +${list.start_hour}+' : '
+                                                       +${list.start_minute}+' ~ '
+                                                       +${list.end_sign}+' '
+                                                       +${list.end_hour}+' : '
+                                                       +${list.end_minute}+ '</span></div>'
+                                                       +'</div><div class=content-line><i class=material-icons>'
+                                                       +'notes</i><div class=title><h7 class=reservation>'
+                                                       +${list.explanation}+'</div>'">[[${list.title}]]
                                 </div>
+                            </div>
                         </th:block>
                     </div>
-                    <div class="week">
-                      <th:block th:each="num,index : ${#numbers.sequence(8,14)}">
-                               <div class="day">
-                                    <h3 class="day-label" th:text="${num}"></h3>
-                                    <div th:if="${#lists.contains(dayList,num)}"
-                                            class="event event-start event-end" data-span="1" data-toggle="popover"
-                                         data-html="true"
-                                         th:attr="data-content='<div class=content-line><div class=event-marking></div>'
-                                                   +'<div class=title>'
-                                                   +'<h5>'+${scheduleList[__index.index__].title}+'</h5>'
-                                                   +'<h7 class=reservation>'
-                                                   +${scheduleList[__index.count__].start_year}+'년 '
-                                                   +${scheduleList[__index.index__].start_month}+'월 '
-                                                   +${scheduleList[__index.index__].start_day}+'일 – '
-                                                   +${scheduleList[__index.index__].end_day}+'일 </br><span class=reservation-time> '
-                                                   +${scheduleList[__index.index__].start_sign}+' '
-                                                   +${scheduleList[__index.index__].start_hour}+' : '
-                                                   +${scheduleList[__index.index__].start_minute}+' ~ '
-                                                   +${scheduleList[__index.index__].end_sign}+' '
-                                                   +${scheduleList[__index.index__].end_hour}+' : '
-                                                   +${scheduleList[__index.index__].end_minute}+ '</span></div>'
-                                                   +'</div><div class=content-line><i class=material-icons>'
-                                                   +'notes</i><div class=title><h7 class=reservation>'
-                                                   +${scheduleList[__index.index__].explanation}+'</div>'">일반 일정 3
-                                    </div>
+                    <div class="week" id="week2">
+                        <th:block th:each="sche:${weekList[1]}">
+                            <div class="day">
+                                <div th:if="sche.day == null" class="day-label"></div>
+                                <div th:unless="sche.day == null" class="day-label">[[${sche.day}]]</div>
+                                <div th:each=" list :${sche.scheduleList}"
+                                     class="event event-start event-end" data-span="1" data-toggle="popover"
+                                     data-html="true"
+                                     th:attr="data-content='<div class=content-line><div class=event-marking></div>'
+                                                       +'<div class=title>'
+                                                       +'<h5>'+${list.title}+'</h5>'
+                                                       +'<h7 class=reservation>'
+                                                       +${list.start_year}+'년 '
+                                                       +${list.start_month}+'월 '
+                                                       +${list.start_day}+'일 – '
+                                                       +${list.end_day}+'일 </br><span class=reservation-time> '
+                                                       +${list.start_sign}+' '
+                                                       +${list.start_hour}+' : '
+                                                       +${list.start_minute}+' ~ '
+                                                       +${list.end_sign}+' '
+                                                       +${list.end_hour}+' : '
+                                                       +${list.end_minute}+ '</span></div>'
+                                                       +'</div><div class=content-line><i class=material-icons>'
+                                                       +'notes</i><div class=title><h7 class=reservation>'
+                                                       +${list.explanation}+'</div>'">[[${list.title}]]
                                 </div>
+                            </div>
+                        </th:block>
+                    </div>
+                    <div class="week" id="week3">
+                        <th:block th:each="sche:${weekList[2]}">
+                            <div class="day">
+                                <div th:if="sche.day == null" class="day-label"></div>
+                                <div th:unless="sche.day == null" class="day-label">[[${sche.day}]]</div>
+                                <div th:each=" list :${sche.scheduleList}"
+                                     class="event event-start event-end" data-span="1" data-toggle="popover"
+                                     data-html="true"
+                                     th:attr="data-content='<div class=content-line><div class=event-marking></div>'
+                                                       +'<div class=title>'
+                                                       +'<h5>'+${list.title}+'</h5>'
+                                                       +'<h7 class=reservation>'
+                                                       +${list.start_year}+'년 '
+                                                       +${list.start_month}+'월 '
+                                                       +${list.start_day}+'일 – '
+                                                       +${list.end_day}+'일 </br><span class=reservation-time> '
+                                                       +${list.start_sign}+' '
+                                                       +${list.start_hour}+' : '
+                                                       +${list.start_minute}+' ~ '
+                                                       +${list.end_sign}+' '
+                                                       +${list.end_hour}+' : '
+                                                       +${list.end_minute}+ '</span></div>'
+                                                       +'</div><div class=content-line><i class=material-icons>'
+                                                       +'notes</i><div class=title><h7 class=reservation>'
+                                                       +${list.explanation}+'</div>'">[[${list.title}]]
+                                </div>
+                            </div>
+                        </th:block>
+                    </div>
+
+                    <div class="week" id="week4">
+                        <th:block th:each="sche:${weekList[3]}">
+                            <div class="day">
+                                <div th:if="sche.day == null" class="day-label"></div>
+                                <div th:unless="sche.day == null" class="day-label">[[${sche.day}]]</div>
+                                <div th:each=" list :${sche.scheduleList}"
+                                     class="event event-start event-end" data-span="1" data-toggle="popover"
+                                     data-html="true"
+                                     th:attr="data-content='<div class=content-line><div class=event-marking></div>'
+                                                       +'<div class=title>'
+                                                       +'<h5>'+${list.title}+'</h5>'
+                                                       +'<h7 class=reservation>'
+                                                       +${list.start_year}+'년 '
+                                                       +${list.start_month}+'월 '
+                                                       +${list.start_day}+'일 – '
+                                                       +${list.end_day}+'일 </br><span class=reservation-time> '
+                                                       +${list.start_sign}+' '
+                                                       +${list.start_hour}+' : '
+                                                       +${list.start_minute}+' ~ '
+                                                       +${list.end_sign}+' '
+                                                       +${list.end_hour}+' : '
+                                                       +${list.end_minute}+ '</span></div>'
+                                                       +'</div><div class=content-line><i class=material-icons>'
+                                                       +'notes</i><div class=title><h7 class=reservation>'
+                                                       +${list.explanation}+'</div>'">[[${list.title}]]
+                                </div>
+                            </div>
+                        </th:block>
+                    </div>
+
+                    <div th:if="${weekList[4] != null}" class="week" id="week5">
+                        <th:block th:each="sche:${weekList[4]}">
+                            <div class="day">
+                                <div th:if="sche.day == null" class="day-label"></div>
+                                <div th:unless="sche.day == null" class="day-label">[[${sche.day}]]</div>
+                                <div th:each=" list :${sche.scheduleList}"
+                                     class="event event-start event-end" data-span="1" data-toggle="popover"
+                                     data-html="true"
+                                     th:attr="data-content='<div class=content-line><div class=event-marking></div>'
+                                                       +'<div class=title>'
+                                                       +'<h5>'+${list.title}+'</h5>'
+                                                       +'<h7 class=reservation>'
+                                                       +${list.start_year}+'년 '
+                                                       +${list.start_month}+'월 '
+                                                       +${list.start_day}+'일 – '
+                                                       +${list.end_day}+'일 </br><span class=reservation-time> '
+                                                       +${list.start_sign}+' '
+                                                       +${list.start_hour}+' : '
+                                                       +${list.start_minute}+' ~ '
+                                                       +${list.end_sign}+' '
+                                                       +${list.end_hour}+' : '
+                                                       +${list.end_minute}+ '</span></div>'
+                                                       +'</div><div class=content-line><i class=material-icons>'
+                                                       +'notes</i><div class=title><h7 class=reservation>'
+                                                       +${list.explanation}+'</div>'">[[${list.title}]]
+                                </div>
+                            </div>
                         </th:block>
                     </div>
 
 
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="tab-pane" id="day" role="tabpanel" aria-labelledby="tab-day">
-                <div class="daily-calendar"><span class="day-name">3일 화요일</span>
-                    <div class="event-consecutive event-start event-end" data-toggle="popover"
-                         data-html="true" data-placement="left" data-content='<div class="content-line"><div class="event-consecutive-marking"></div><div class="title"><h5>일정 1</h5><h7 class="reservation">2019년 9월 15일 – 17일</div>
-            </div><div class="content-line"><i class="material-icons">
-    notes
-    </i><div class="title"><h7 class="reservation">스케쥴 메모, 설명이 나타납니다.</div>'>연속 일정 1
-                    </div>
-                    <div class="event-consecutive event-start event-end" data-toggle="popover"
-                         data-html="true" data-placement="left" data-content='<div class="content-line"><div class="event-consecutive-marking"></div><div class="title"><h5>일정 1</h5><h7 class="reservation">2019년 9월 15일 – 17일</div>
-            </div><div class="content-line"><i class="material-icons">
-    notes
-    </i><div class="title"><h7 class="reservation">스케쥴 메모, 설명이 나타납니다.</div>'>연속 일정 2
-                    </div>
-                    <div class="event event-start event-end" data-toggle="popover"
-                         data-html="true" data-placement="left" data-content='<div class="content-line"><div class="event-marking"></div><div class="title"><h5>일정 1</h5><h7 class="reservation">2019년 9월 15일 – 17일<span class="reservation-time">⋅오후 2:00~ 3:00</span></div>
-            </div><div class="content-line"><i class="material-icons">
-    notes
-    </i><div class="title"><h7 class="reservation">스케쥴 메모, 설명이 나타납니다.</div>'>일반 일정 3
-                    </div>
-                    <div class="event-repeated event-start event-end" data-toggle="popover"
-                         data-html="true" data-placement="left" data-content='<div class="content-line"><div class="event-repeated-marking"></div><div class="title"><h5>일정 1</h5><h7 class="reservation">2019년 9월 15일 – 17일<span class="reservation-time">⋅오후 2:00~ 3:00</span><span class="repeat-message">⋅매월 반복</span></div>
-            </div><div class="content-line"><i class="material-icons">
-    notes
-    </i><div class="title"><h7 class="reservation">스케쥴 메모, 설명이 나타납니다.</div>'>반복 일정 1
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+
+        </div>
 
 
         <div class="modal fade" id="registerSchedule" tabindex="-1" role="dialog" aria-labelledby="registerScheduleLabel"

@@ -3,6 +3,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.repos.MonthlyRepo">
 
+    <select id="getCountCalender" resultType="int">
+        SELECT
+            COUNT(day)
+        FROM
+            Calendar
+        WHERE
+            year = #{year} AND month = #{month}
+    </select>
+    
+    <insert id="createMonthCalendar" >
+        INSERT INTO
+        Calendar(year
+                ,month
+                ,day)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+                (#{item.year}
+                ,#{item.month}
+                ,#{item.day})
+        </foreach>
+    </insert>
+    
+
     <insert id="createSchedule">
         INSERT INTO
         monthly(title
@@ -21,7 +44,8 @@
                 ,end_sign
                 ,repeat_month
                 ,all_day)
-        VALUES(#{title}
+        VALUES
+                (#{title}
                 ,#{explanation}
                 ,#{start_year}
                 ,#{start_month}
@@ -62,6 +86,7 @@
             monthly
         WHERE
             start_year LIKE #{year} AND start_month LIKE #{month}
+            AND start_day LIKE #{day}
         ORDER BY
             start_year
             ,start_month
@@ -70,4 +95,49 @@
             ,start_minute
             ,start_sign
     </select>
+
+    <select id="getSchedlueStatus" resultMap="calendarRt">
+        SELECT
+            *
+        FROM
+            Calendar
+        WHERE
+            year = #{year} AND month = #{month}
+    </select>
+
+    <resultMap id="calendarRt" type="com.example.demo.domain.CalendarDTO">
+        <result property="year" column="year" ></result>
+        <result property="month" column="month" ></result>
+        <result property="day"  column="day"></result>
+        <collection property="scheduleList"
+                    column="{year=year,month=month,day=day}"
+                    javaType="java.util.ArrayList"
+                    ofType="com.example.demo.domain.MonthlyDTO"
+                    select="getScheduleList">
+        </collection>
+    </resultMap>
+
+    <resultMap id="calendarResult" type="com.example.demo.domain.CalendarDTO">
+        <result property="year" column="year" ></result>
+        <result property="month" column="month" ></result>
+        <result property="day"  column="day"></result>
+        <collection property="scheduleList" resultMap="monthlyResult"></collection>
+    </resultMap>
+
+    <resultMap id="monthlyResult" type="com.example.demo.domain.MonthlyDTO">
+        <result property="title" column="title"></result>
+        <result property="explanation" column="explanation"></result>
+        <result property="start_year" column="start_year"></result>
+        <result property="start_month" column="start_month"></result>
+        <result property="start_day" column="start_day"></result>
+        <result property="end_year" column="end_year"></result>
+        <result property="end_month" column="end_month"></result>
+        <result property="end_day" column="end_day"></result>
+        <result property="start_hour" column="start_hour"></result>
+        <result property="start_minute" column="start_minute"></result>
+        <result property="start_sign" column="start_sign"></result>
+        <result property="repeat_month" column="repeat_month"></result>
+        <result property="all_day" column="all_day"></result>
+    </resultMap>
+
 </mapper>
