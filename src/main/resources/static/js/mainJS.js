@@ -87,18 +87,18 @@ $(document).ready(function(){
     });
     
     $("#make_schedule").click(function () {
-        let ids = ["#message-text","#recipient-name","#startSchedule"
-        ,"#endSchedule","#startTime","#endTime"];
+        let ids = ["#message-text","#recipient-name","#startSchedule","#endSchedule","#startTime","#endTime"];
         for(let i = 0; i < ids.length; i++){
-            if(i > 3&&$("#all_day").is("checked")){
-                break;
+            if(i > 3 && $("#all_day").is(":checked")){
+                continue;
             }
-           if(!$.vaildate($(ids[i]).val())){
-               alert("내용을 확인해 주세요")
-               return;
-           }
-        }
 
+            if(!$.vaildate($(ids[i]).val())){
+               alert("내용을 입력해주세요");
+               return;
+            }
+        }
+        
 
 
         $.ajax({

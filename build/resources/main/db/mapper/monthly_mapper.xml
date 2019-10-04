@@ -28,7 +28,7 @@
 
     <insert id="createSchedule">
         INSERT INTO
-        monthly(title
+        Monthly(title
                 ,explanation
                 ,start_year
                 ,start_month
@@ -82,7 +82,7 @@
             ,repeat_month
             ,all_day
         FROM
-            monthly
+            Monthly
         WHERE
             start_year LIKE #{year} AND start_month LIKE #{month}
             AND start_day LIKE #{day}

@@ -87,19 +87,19 @@ $(document).ready(function(){
     });
     
     $("#make_schedule").click(function () {
-        let ids = ["#message-text","#recipient-name","#startSchedule"
-        ,"#endSchedule","#startTime","#endTime"];
+        let ids = ["#message-text","#recipient-name","#startSchedule","#endSchedule","#startTime","#endTime"];
         for(let i = 0; i < ids.length; i++){
-            if(i > 3&&$("#all_day").is("checked")){
-                break;
+
+            if(i > 3 && $("#all_day").is(":checked")){
+                //alert("내용을 입력해주세요")
+                continue;
             }
-           if(!$.vaildate($(ids[i]).val())){
-               alert("내용을 확인해 주세요")
+
+            if(!$.vaildate($(ids[i]).val())){
+               alert("내용을 입력해주세요");
                return;
            }
-        }
-
-
+.2        }
 
         $.ajax({
             url : "/monthly/register",
