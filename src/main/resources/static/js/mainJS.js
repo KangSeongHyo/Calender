@@ -3,7 +3,6 @@ $(document).ready(function(){
     let month = $("#present").data("month");
     let day = $(".day-daily").text().substr(0,2);
 
-
     $("#dailyReg").click(function () {
         $("#startDatePicker").data("datetimepicker").date(month+"/"+day+"/"+year);
         $("#endDatePicker").data("datetimepicker").date(month+"/"+day+"/"+year);
@@ -73,6 +72,8 @@ $(document).ready(function(){
 
         if(check){
             $("#endDatePicker").data("datetimepicker").date(date);
+            $("#startTime").val("");
+            $("#endTime").val("");
             $("#startTime").prop("readOnly",true);
             $("#endTime").prop("readOnly",true);
             $("#startSchedule").prop("readOnly",true);
@@ -86,6 +87,20 @@ $(document).ready(function(){
     });
     
     $("#make_schedule").click(function () {
+        let ids = ["#message-text","#recipient-name","#startSchedule"
+        ,"#endSchedule","#startTime","#endTime"];
+        for(let i = 0; i < ids.length; i++){
+            if(i > 3&&$("#all_day").is("checked")){
+                break;
+            }
+           if(!$.vaildate($(ids[i]).val())){
+               alert("내용을 확인해 주세요")
+               return;
+           }
+        }
+
+
+
         $.ajax({
             url : "/monthly/register",
             data : $("#monthly_day_form").serialize()
@@ -98,11 +113,16 @@ $(document).ready(function(){
             $('#registerSchedule').modal('hide');
             location.reload();
         }).fail(function (xhr,status) {
-
+            if(xhr.status==500){
+                alert("서버에 오류가 발생하였습니다.");
+            }else if(xhr.status==400){
+                alert("요청에 오류가 있습니다.");
+            }else{
+                alert("오류가 발생하였습니다.");
+            }
         });
     });
     
-
     $('[data-toggle="tooltip"]').tooltip();
     $('#view li:first-child a').tab('show');
 
@@ -122,8 +142,6 @@ $(document).ready(function(){
     $(".event-consecutive, .event, .event-repeated").click(function(event) {
         event.stopPropagation();
     });
-
-
 
     $('#startDatePicker').datetimepicker({
         format: 'L'

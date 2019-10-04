@@ -352,7 +352,7 @@
                          </div><div class="content-line"><i class="material-icons">notes</i><div class="title"><h7 class="reservation"></div>'>일정이 없습니다.
                     </div>
                     <th:block th:unless="${scheduleOfDay[0].start_month==null}" th:each="list :${scheduleOfDay}" th:with="result=${list.end_day}-${list.start_day}">
-                        <div th:if="${result}==0" th:classappend="|${list.repeat_month?'event-repeated' : ''} ${list.all_day?'event-all-day':''}|"
+                        <div th:if="${result}==0" th:classappend="|${list.repeat_month?'event-repeated' : ''} ${list.all_day?'event-all-day':''}|" th:with="all=${list.all_day}?'하루종일':''"
                              class="event event-start event-end" data-span="1" data-toggle="popover"
                              data-html="true"
                              th:attr="data-content='<div class=content-line><div class=event-marking></div>'

@@ -95,7 +95,7 @@
             ,start_sign
     </select>
 
-    <select id="getSchedlueStatus" resultMap="calendarRt">
+    <select id="getScheduleStatus" resultMap="calendarRt">
         SELECT
             *
         FROM

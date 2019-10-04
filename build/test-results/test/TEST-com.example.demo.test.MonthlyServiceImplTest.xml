@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.demo.test.MonthlyServiceImplTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-10-04T09:45:33" hostname="DESKTOP-L45GBMG" time="1.471">
+  <properties/>
+  <testcase name="test" classname="com.example.demo.test.MonthlyServiceImplTest" time="1.453"/>
+  <testcase name="regScheduleTest" classname="com.example.demo.test.MonthlyServiceImplTest" time="0.017"/>
+  <system-out><![CDATA[20191004 18:45:29.037 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.test.MonthlyServiceImplTest], using SpringBootContextLoader 
+20191004 18:45:29.046 [Test worker] INFO o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.example.demo.test.MonthlyServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}. 
+20191004 18:45:29.048 [Test worker] INFO o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.test.MonthlyServiceImplTest]: MonthlyServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration. 
+20191004 18:45:29.191 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.test.MonthlyServiceImplTest 
+20191004 18:45:29.327 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] 
+20191004 18:45:29.356 [Test worker] INFO o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@71b7a553, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@75950464, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@75ca6154, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1081c66, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4d59ac29, org.springframework.test.context.transaction.TransactionalTestExecutionListener@10b237c2, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@36543441, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@777ef5c1, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@77c637e3, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@764b12fe, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@612ac64a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@61fae753] 
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.4.RELEASE)
+
+20191004 18:45:29.688 [Test worker] INFO c.e.d.t.MonthlyServiceImplTest - Starting MonthlyServiceImplTest on DESKTOP-L45GBMG with PID 14576 (started by 강성효 in C:\Users\강성효\Desktop\demo-spring-boot) 
+20191004 18:45:29.688 [Test worker] INFO c.e.d.t.MonthlyServiceImplTest - No active profile set, falling back to default profiles: default 
+20191004 18:45:32.981 [Test worker] INFO o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
+20191004 18:45:33.394 [Test worker] INFO o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index 
+20191004 18:45:33.835 [Test worker] INFO c.e.d.t.MonthlyServiceImplTest - Started MonthlyServiceImplTest in 4.431 seconds (JVM running for 6.013) 
+20191004 18:45:34.094 [Test worker] INFO c.e.d.a.LogAop - [Started] Class = com.example.demo.service.MonthlyServiceImpl / Method = scheduleMonthlyList----------------------- 
+20191004 18:45:34.126 [Test worker] INFO c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+20191004 18:45:34.894 [Test worker] INFO c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+20191004 18:45:34.949 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            COUNT(day)
+        FROM
+            Calendar
+        WHERE
+            year = '2019' AND month = '10'
+ {executed in 16 msec} 
+20191004 18:45:34.969 [Test worker] INFO j.resultsettable - 
+|-----------|
+|count(day) |
+|-----------|
+|31         |
+|-----------|
+ 
+20191004 18:45:34.981 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            *
+        FROM
+            Calendar
+        WHERE
+            year = '2019' AND month = '10'
+ {executed in 2 msec} 
+20191004 18:45:34.990 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '01'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 4 msec} 
+20191004 18:45:35.000 [Test worker] INFO j.resultsettable - 
+|-------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title  |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|-------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|테스트 일정 |설명          |2019       |10          |01        |2019     |10        |01      |8          |14           |AM         |10       |14         |PM       |false        |false   |
+|테스트 일정 |설명          |2019       |10          |01        |2019     |10        |01      |8          |14           |AM         |10       |14         |PM       |false        |false   |
+|-------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.013 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '02'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 3 msec} 
+20191004 18:45:35.024 [Test worker] INFO j.resultsettable - 
+|-------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title  |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|-------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|테스트 일정 |설명          |2019       |10          |02        |2019     |10        |02      |8          |14           |AM         |10       |14         |PM       |false        |false   |
+|테스트 일정 |설명          |2019       |10          |02        |2019     |10        |02      |8          |14           |AM         |10       |14         |PM       |false        |false   |
+|테스트 일정 |설명          |2019       |10          |02        |2019     |10        |02      |8          |14           |AM         |10       |14         |PM       |false        |false   |
+|-------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.030 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '03'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 3 msec} 
+20191004 18:45:35.039 [Test worker] INFO j.resultsettable - 
+|-------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title  |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|-------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|테스트 제목 |테스트         |2019       |10          |03        |2019     |10        |03      |[null]     |[null]       |[null]     |[null]   |[null]     |[null]   |false        |false   |
+|테스트 제목 |테스트         |2019       |10          |03        |2019     |10        |03      |[null]     |[null]       |[null]     |[null]   |[null]     |[null]   |false        |false   |
+|테스트 일정 |설명          |2019       |10          |03        |2019     |10        |03      |8          |14           |AM         |10       |14         |PM       |false        |false   |
+|테스트 일정 |설명          |2019       |10          |03        |2019     |10        |03      |8          |14           |AM         |10       |14         |PM       |false        |false   |
+|테스트 일정 |설명          |2019       |10          |03        |2019     |10        |03      |8          |14           |AM         |10       |14         |PM       |false        |false   |
+|-------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.045 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '04'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.060 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|qe    |qeffqef     |2019       |10          |04        |2019     |10        |04      |12         |00           |AM         |11       |59         |PM       |false        |true    |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.064 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '05'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.068 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.073 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '06'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.076 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.081 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '07'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 1 msec} 
+20191004 18:45:35.091 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.095 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '08'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.099 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.103 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '09'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 1 msec} 
+20191004 18:45:35.106 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.110 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '10'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.115 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|qef   |eq          |2019       |10          |10        |2019     |10        |10      |[null]     |[null]       |[null]     |[null]   |[null]     |[null]   |false        |true    |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.120 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '11'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.123 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.128 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '12'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 1 msec} 
+20191004 18:45:35.130 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.137 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '13'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 5 msec} 
+20191004 18:45:35.157 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.177 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '14'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 1 msec} 
+20191004 18:45:35.180 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.186 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '15'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 5 msec} 
+20191004 18:45:35.189 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|밴복테스트 |밴복          |2019       |10          |15        |2019     |10        |15      |10         |52           |AM         |10       |52         |PM       |true         |false   |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.198 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '16'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.199 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.205 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '17'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.218 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|졸업식   |졸업하러가염      |2019       |10          |17        |2019     |10        |17      |5          |13           |AM         |6        |05         |AM       |false        |false   |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.222 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '18'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 1 msec} 
+20191004 18:45:35.224 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.228 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '19'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.229 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.234 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '20'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.236 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.241 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '21'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.243 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.248 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '22'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 3 msec} 
+20191004 18:45:35.251 [Test worker] INFO j.resultsettable - 
+|----------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title     |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|----------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|미니기기 / 음향 |ㅂㄷㄹ         |2019       |10          |22        |2019     |10        |22      |10         |27           |AM         |10       |27         |AM       |false        |false   |
+|----------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.255 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '23'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 1 msec} 
+20191004 18:45:35.260 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|연속일정  |연속일정        |2019       |10          |23        |2019     |10        |27      |10         |47           |PM         |10       |47         |PM       |false        |false   |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.269 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '24'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 8 msec} 
+20191004 18:45:35.271 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.275 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '25'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.276 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.280 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '26'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.281 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.285 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '27'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.286 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.290 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '28'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 1 msec} 
+20191004 18:45:35.292 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.296 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '29'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 2 msec} 
+20191004 18:45:35.297 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.301 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '30'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 1 msec} 
+20191004 18:45:35.302 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.306 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT
+            title
+            ,explanation
+            ,start_year
+            ,start_month
+            ,start_day
+            ,end_year
+            ,end_month
+            ,end_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+            ,end_hour
+            ,end_minute
+            ,end_sign
+            ,repeat_month
+            ,all_day
+        FROM
+            monthly
+        WHERE
+            start_year LIKE '2019' AND start_month LIKE '10'
+            AND start_day LIKE '31'
+        ORDER BY
+            start_year
+            ,start_month
+            ,start_day
+            ,start_hour
+            ,start_minute
+            ,start_sign
+ {executed in 1 msec} 
+20191004 18:45:35.307 [Test worker] INFO j.resultsettable - 
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|title |explanation |start_year |start_month |start_day |end_year |end_month |end_day |start_hour |start_minute |start_sign |end_hour |end_minute |end_sign |repeat_month |all_day |
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+|------|------------|-----------|------------|----------|---------|----------|--------|-----------|-------------|-----------|---------|-----------|---------|-------------|--------|
+ 
+20191004 18:45:35.309 [Test worker] INFO j.resultsettable - 
+|-----|------|----|
+|year |month |day |
+|-----|------|----|
+|2019 |10    |01  |
+|2019 |10    |02  |
+|2019 |10    |03  |
+|2019 |10    |04  |
+|2019 |10    |05  |
+|2019 |10    |06  |
+|2019 |10    |07  |
+|2019 |10    |08  |
+|2019 |10    |09  |
+|2019 |10    |10  |
+|2019 |10    |11  |
+|2019 |10    |12  |
+|2019 |10    |13  |
+|2019 |10    |14  |
+|2019 |10    |15  |
+|2019 |10    |16  |
+|2019 |10    |17  |
+|2019 |10    |18  |
+|2019 |10    |19  |
+|2019 |10    |20  |
+|2019 |10    |21  |
+|2019 |10    |22  |
+|2019 |10    |23  |
+|2019 |10    |24  |
+|2019 |10    |25  |
+|2019 |10    |26  |
+|2019 |10    |27  |
+|2019 |10    |28  |
+|2019 |10    |29  |
+|2019 |10    |30  |
+|2019 |10    |31  |
+|-----|------|----|
+ 
+20191004 18:45:35.309 [Test worker] INFO c.e.d.s.MonthlyServiceImpl - 시작날짜 :  
+20191004 18:45:35.310 [Test worker] INFO c.e.d.s.MonthlyServiceImpl - Week단위로 일정 분류 
+20191004 18:45:35.310 [Test worker] INFO c.e.d.a.LogAop - [Completed] Class = com.example.demo.service.MonthlyServiceImpl / Method = scheduleMonthlyList[CalendarDTO{year='2019', month='10', day='03', scheduleList=null}]----------------------- 
+20191004 18:45:35.319 [Test worker] INFO c.e.d.a.LogAop - [Started] Class = com.example.demo.service.MonthlyServiceImpl / Method = regSchedule----------------------- 
+20191004 18:45:35.319 [Test worker] INFO c.e.d.s.MonthlyServiceImpl - regSchedule =MonthlyDTO{title='테스트 일정', explanation='설명', start_year='null', start_month='null', start_day='null', end_year='null', end_month='null', end_day='null', start_hour='null', start_minute='null', start_sign='null', end_hour='null', end_minute='null', end_sign='null', repeat_month=false, all_day=false} 
+20191004 18:45:35.329 [Test worker] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. INSERT INTO
+        monthly(title
+                ,explanation
+                ,start_year
+                ,start_month
+                ,start_day
+                ,end_year
+                ,end_month
+                ,end_day
+                ,start_hour
+                ,start_minute
+                ,start_sign
+                ,end_hour
+                ,end_minute
+                ,end_sign
+                ,repeat_month
+                ,all_day)
+        VALUES
+                ('테스트 일정'
+                ,'설명'
+                ,'2019'
+                ,'10'
+                ,'03'
+                ,'2019'
+                ,'10'
+                ,'03'
+                ,'8'
+                ,'14'
+                ,'AM'
+                ,'10'
+                ,'14'
+                ,'PM'
+                ,0
+                ,0)
+ {executed in 6 msec} 
+20191004 18:45:35.330 [Test worker] INFO c.e.d.a.LogAop - [Completed] Class = com.example.demo.service.MonthlyServiceImpl / Method = regSchedule[MonthlyDTO{title='테스트 일정', explanation='설명', start_year='2019', start_month='10', start_day='03', end_year='2019', end_month='10', end_day='03', start_hour='8', start_minute='14', start_sign='AM', end_hour='10', end_minute='14', end_sign='PM', repeat_month=false, all_day=false}]----------------------- 
+]]></system-out>
+  <system-err><![CDATA[Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+]]></system-err>
+</testsuite>

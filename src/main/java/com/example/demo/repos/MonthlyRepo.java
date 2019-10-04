@@ -13,8 +13,7 @@ import java.util.List;
 public interface MonthlyRepo {
     public int createSchedule(MonthlyDTO monthlyDTO);
     public List<MonthlyDTO> getScheduleList(CalendarDTO calendarDTO);
-    public List<CalendarDTO> getSchedlueStatus(CalendarDTO monthlyDTO);
+    public List<CalendarDTO> getScheduleStatus(CalendarDTO monthlyDTO);
     public int getCountCalender(CalendarDTO calendarDTO);
     public int createMonthCalendar(List<CalendarDTO> initDayOfMonthList);
-    public List<CalendarDTO> test(CalendarDTO calendarDTO);
 }

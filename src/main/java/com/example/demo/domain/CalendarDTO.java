@@ -9,7 +9,6 @@ public class CalendarDTO {
     String year;
     String month;
     String day;
-    int size;
     List<MonthlyDTO> scheduleList;
 
     public CalendarDTO() {
@@ -50,14 +49,6 @@ public class CalendarDTO {
         this.day = day;
     }
 
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
     public List<MonthlyDTO> getScheduleList() {
         return scheduleList;
     }
@@ -72,7 +63,6 @@ public class CalendarDTO {
                 "year='" + year + '\'' +
                 ", month='" + month + '\'' +
                 ", day='" + day + '\'' +
-                ", size=" + size +
                 ", scheduleList=" + scheduleList +
                 '}';
     }

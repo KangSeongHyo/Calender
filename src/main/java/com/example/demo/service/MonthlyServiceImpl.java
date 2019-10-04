@@ -63,18 +63,18 @@ public class MonthlyServiceImpl implements MonthlyService{
 
         // 매월반복
         if(repeat){
+            logger.info("매월반복 처리");
             int smonth = Integer.parseInt(monthlyDTO.getStart_month());
             int emonth = Integer.parseInt(monthlyDTO.getEnd_month());
 
             for(int i = 0; i+smonth <=12; i++){
                 monthlyDTO.setStart_month(String.format("%02d",smonth+i));
                 monthlyDTO.setEnd_month((String.format("%02d",emonth+i)));
-                monthlyRepo.createSchedule(monthlyDTO);
+              res = monthlyRepo.createSchedule(monthlyDTO);
             }
         }else{
             res = monthlyRepo.createSchedule(monthlyDTO);
         }
-
         return res;
     }
 
@@ -88,7 +88,7 @@ public class MonthlyServiceImpl implements MonthlyService{
         Map<String,Object> resultMap = new HashMap<>();
         initCalendar(calendarDTO);
 
-        List<CalendarDTO> scheduleList = monthlyRepo.getSchedlueStatus(calendarDTO);
+        List<CalendarDTO> scheduleList = monthlyRepo.getScheduleStatus(calendarDTO);
         List<CalendarDTO>[] weekList = dayOfWeekList(scheduleList,startDayOfMonth(calendarDTO));
 
         resultMap.put("weekList",weekList);
@@ -98,24 +98,21 @@ public class MonthlyServiceImpl implements MonthlyService{
     /**
      * 해당년월 Calendar 테이블 초기화
      * @param calendarDTO
-     * @return
      */
     @Override
-    public int initCalendar(CalendarDTO calendarDTO) {
+    public void initCalendar(CalendarDTO calendarDTO) {
         checkYearAndMonthAndDay(calendarDTO);
         int lastDay = lastDayOfMonth(Integer.parseInt(calendarDTO.getMonth()));
-
         if(monthlyRepo.getCountCalender(calendarDTO) == 0){
+            logger.info(calendarDTO.getYear()+"년"+calendarDTO.getMonth()+"월 Calendar 초기화");
             List<CalendarDTO> initDayOfMonthList = new ArrayList<>();
             for(int day = 1; day <= lastDay; day++){
                 initDayOfMonthList.add(new CalendarDTO(calendarDTO.getYear()
                         ,calendarDTO.getMonth()
                         ,String.format("%02d", day)));
             }
-
             monthlyRepo.createMonthCalendar(initDayOfMonthList);
         }
-        return 0;
     }
 
     /**
@@ -128,6 +125,8 @@ public class MonthlyServiceImpl implements MonthlyService{
     public List<CalendarDTO>[] dayOfWeekList(List<CalendarDTO> scheduleList,int stratDay) {
         List<CalendarDTO>[] weekList = new ArrayList[5];
         logger.info("시작날짜 : ",String.valueOf(stratDay));
+        logger.info("Week단위로 일정 분류");
+
         int count = stratDay;
         int week = 0;
         int idx = 0;
@@ -163,6 +162,7 @@ public class MonthlyServiceImpl implements MonthlyService{
         String day = calendarDTO.getDay();
 
         if(month == null && year == null && day == null) {
+            logger.info("년/월/일 초기화");
             Date today = new Date();
             SimpleDateFormat dateFormatYear = new SimpleDateFormat("YYYY");
             SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MM");
@@ -174,7 +174,8 @@ public class MonthlyServiceImpl implements MonthlyService{
             calendarDTO.setMonth(month);
             calendarDTO.setDay(day);
         }else if((month!=null)&&(year!=null)&&day==null){
-           // 초기값설정
+            // 초기값설정
+            logger.info("일 초기화");
             calendarDTO.setDay("01");
         }
 

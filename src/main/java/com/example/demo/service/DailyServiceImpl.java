@@ -17,6 +17,8 @@ public class DailyServiceImpl implements DailyService {
     @Resource
     MonthlyRepo monthlyRepo;
 
+    @Resource
+    MonthlyService monthlyService;
     /**
      * 요청 년/월/일에 대한 Daily 일정 리스트
      * @param calendarDTO
@@ -25,7 +27,7 @@ public class DailyServiceImpl implements DailyService {
     @Override
     public List<MonthlyDTO> scheduleOfDay(CalendarDTO calendarDTO) {
         MonthlyDTO monthlyDTO = new MonthlyDTO();
-        new MonthlyServiceImpl().checkYearAndMonthAndDay(calendarDTO);
+        monthlyService.checkYearAndMonthAndDay(calendarDTO);
         List<MonthlyDTO> monthlyDTOList = monthlyRepo.getScheduleList(calendarDTO);
         if(monthlyDTOList.size() == 0){
             monthlyDTO.setStart_day(calendarDTO.getDay());
