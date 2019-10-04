@@ -25,7 +25,7 @@ $(document).ready(function(){
         let year_parse = parseInt(year);
         let month_parse = parseInt(month);
         month_parse -= 1;
-        if(month==0){
+        if(month_parse==0){
             year_parse -= 1;
             month_parse = 12;
         }
@@ -88,15 +88,26 @@ $(document).ready(function(){
     
     $("#make_schedule").click(function () {
         let ids = ["#message-text","#recipient-name","#startSchedule","#endSchedule","#startTime","#endTime"];
+        let smonth = parseInt($("#startSchedule").val().substr(0,2));
+        let emonth = parseInt($("#endSchedule").val().substr(0,2));
+        let sday = parseInt($("#startSchedule").val().substr(3,2));
+        let eday = parseInt($("#endSchedule").val().substr(3,2));
+
+        if(eday<sday && smonth==emonth ){
+            alert("일정 시작일정보다 종료일정이 빠릅니다.");
+            return;
+        }
+
         for(let i = 0; i < ids.length; i++){
             if(i > 3 && $("#all_day").is(":checked")){
                 continue;
+
+            }
+            if(!$.vaildate($(ids[i]).val())){
+                alert("내용을 입력해주세요");
+                return;
             }
 
-            if(!$.vaildate($(ids[i]).val())){
-               alert("내용을 입력해주세요");
-               return;
-            }
         }
 
 
