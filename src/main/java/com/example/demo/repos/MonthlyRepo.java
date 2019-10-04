@@ -17,5 +17,4 @@ public interface MonthlyRepo {
     public int getCountCalender(CalendarDTO calendarDTO);
     public int createMonthCalendar(List<CalendarDTO> initDayOfMonthList);
     public List<CalendarDTO> test(CalendarDTO calendarDTO);
-
 }

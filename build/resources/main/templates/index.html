@@ -68,7 +68,7 @@
                                 <div th:unless="sche.day == null" class="day-label">[[${sche.day}]]</div>
                                 <th:block th:each="list :${sche.scheduleList}"
                                           th:with="result=${list.end_day}-${list.start_day}" >
-                                    <div th:if="${result}==0"
+                                    <div th:if="${result}==0" th:classappend="${list.repeat_month}?event-repeated"
                                          class="event event-start event-end" data-span="1" data-toggle="popover"
                                          data-html="true"
                                          th:attr="data-content='<div class=content-line><div class=event-marking></div>'
@@ -89,7 +89,7 @@
                                                        +'notes</i><div class=title><h7 class=reservation>'
                                                        +${list.explanation}+'</div>'">[[${list.title}]]
                                     </div>
-                                    <div th:unless="${result}==0"
+                                    <div th:unless="${result}==0" th:classappend="${list.repeat_month}?event-repeated"
                                          class="event-consecutive event-start event-end" data-toggle="popover"
                                          data-html="true"
                                          th:attr="data-span=${result},data-content='<div class=content-line><div class=event-consecutive-marking></div>'
@@ -121,7 +121,7 @@
                                 <div class="day-label">[[${sche.day}]]</div>
                                 <th:block th:each="list :${sche.scheduleList}"
                                           th:with="result=${list.end_day}-${list.start_day}" >
-                                    <div th:if="${result}==0"
+                                    <div th:if="${result}==0" th:classappend="${list.repeat_month}?event-repeated"
                                          class="event event-start event-end" data-span="1" data-toggle="popover"
                                          data-html="true"
                                          th:attr="data-content='<div class=content-line><div class=event-marking></div>'
@@ -142,7 +142,7 @@
                                                        +'notes</i><div class=title><h7 class=reservation>'
                                                        +${list.explanation}+'</div>'">[[${list.title}]]
                                     </div>
-                                    <div th:unless="${result}==0"
+                                    <div th:unless="${result}==0" th:classappend="${list.repeat_month}?event-repeated"
                                          class="event-consecutive event-start event-end" data-toggle="popover"
                                          data-html="true"
                                          th:attr="data-span=${result},data-content='<div class=content-line><div class=event-consecutive-marking></div>'
@@ -173,7 +173,7 @@
                                 <div class="day-label">[[${sche.day}]]</div>
                                 <th:block th:each="list :${sche.scheduleList}"
                                           th:with="result=${list.end_day}-${list.start_day}" >
-                                    <div th:if="${result}==0"
+                                    <div th:if="${result}==0" th:classappend="${list.repeat_month}?event-repeated"
                                          class="event event-start event-end" data-span="1" data-toggle="popover"
                                          data-html="true"
                                          th:attr="data-content='<div class=content-line><div class=event-marking></div>'
@@ -194,7 +194,7 @@
                                                        +'notes</i><div class=title><h7 class=reservation>'
                                                        +${list.explanation}+'</div>'">[[${list.title}]]
                                     </div>
-                                    <div th:unless="${result}==0"
+                                    <div th:unless="${result}==0" th:classappend="${list.repeat_month}?event-repeated"
                                          class="event-consecutive event-start event-end" data-toggle="popover"
                                          data-html="true"
                                          th:attr="data-span=${result},data-content='<div class=content-line><div class=event-consecutive-marking></div>'
@@ -226,7 +226,7 @@
                                 <div class="day-label">[[${sche.day}]]</div>
                                <th:block th:each="list :${sche.scheduleList}"
                                          th:with="result=${list.end_day}-${list.start_day}" >
-                                   <div th:if="${result}==0"
+                                   <div th:if="${result}==0" th:classappend="${list.repeat_month}?event-repeated"
                                      class="event event-start event-end" data-span="1" data-toggle="popover"
                                      data-html="true"
                                      th:attr="data-content='<div class=content-line><div class=event-marking></div>'
@@ -247,7 +247,7 @@
                                                        +'notes</i><div class=title><h7 class=reservation>'
                                                        +${list.explanation}+'</div>'">[[${list.title}]]
                                    </div>
-                                   <div th:unless="${result}==0"
+                                   <div th:unless="${result}==0" th:classappend="${list.repeat_month}?event-repeated"
                                      class="event-consecutive event-start event-end" data-toggle="popover"
                                      data-html="true"
                                      th:attr="data-span=${result},data-content='<div class=content-line><div class=event-consecutive-marking></div>'
@@ -279,7 +279,7 @@
                                 <div class="day-label">[[${sche.day}]]</div>
                                 <th:block th:each="list :${sche.scheduleList}"
                                           th:with="result=${list.end_day}-${list.start_day}" >
-                                    <div th:if="${result}==0"
+                                    <div th:if="${result}==0" th:classappend="${list.repeat_month}?event-repeated"
                                          class="event event-start event-end" data-span="1" data-toggle="popover"
                                          data-html="true"
                                          th:attr="data-content='<div class=content-line><div class=event-marking></div>'
@@ -300,7 +300,7 @@
                                                        +'notes</i><div class=title><h7 class=reservation>'
                                                        +${list.explanation}+'</div>'">[[${list.title}]]
                                     </div>
-                                    <div th:unless="${result}==0"
+                                    <div th:unless="${result}==0" th:classappend="${list.repeat_month}?event-repeated"
                                          class="event-consecutive event-start event-end" data-toggle="popover"
                                          data-html="true"
                                          th:attr="data-span=${result},data-content='<div class=content-line><div class=event-consecutive-marking></div>'
@@ -329,6 +329,12 @@
 
                 </div>
             </div>
+            <div class="tab-pane" id="day" role="tabpanel" aria-labelledby="tab-day">
+                <div class="daily-calendar"><span class="day-name">3일 화요일</span>
+                    <div class="event-consecutive event-start event-end" data-toggle="popover"
+                         data-html="true" data-placement="left" data-content='<div class="content-line"><div class="event-consecutive-marking"></div><div class="title"><h5>일정 1</h5><h7 class="reservation">2019년 9월 15일 – 17일</div>
+                         </div><div class="content-line"><i class="material-icons">notes</i><div class="title"><h7 class="reservation">스케쥴 메모, 설명이 나타납니다.</div>'>연속 일정 1
+                    </div>
         </div>
 
 
@@ -349,20 +355,20 @@
                         <form id="monthly_day_form">
                             <div class="form-group">
                                 <label class="col-form-label">일정 제목</label>
-                                <input type="text" class="form-control" id="recipient-name" name="title">
+                                <input type="text" class="form-control" id="recipient-name" name="title" required>
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">일정 설명</label>
-                                <textarea class="form-control" id="message-text" name="explanation"></textarea>
+                                <textarea class="form-control" id="message-text" name="explanation" required></textarea>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="col-form-label">일정 시작 날짜</label>
-                                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                        <div class="input-group date" id="startDatePicker" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input"
-                                                   data-target="#datetimepicker1" name="startSchedule"/>
-                                            <div class="input-group-append" data-target="#datetimepicker1"
+                                                   data-target="#startDatePicker" name="startSchedule" id="startSchedule" required/>
+                                            <div class="input-group-append" data-target="#startDatePicker"
                                                  data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="material-icons">
                                                     calendar_today
@@ -374,10 +380,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="col-form-label">일정 시작 시간</label>
-                                        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                        <div class="input-group date" id="startTImePicker" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input"
-                                                   data-target="#datetimepicker2" name="startTime"/>
-                                            <div class="input-group-append" data-target="#datetimepicker2"
+                                                   data-target="#startTImePicker" name="startTime" id="startTime" />
+                                            <div class="input-group-append" data-target="#startTImePicker"
                                                  data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="material-icons">
                                                     access_time
@@ -391,10 +397,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="col-form-label">일정 종료 날짜</label>
-                                        <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                        <div class="input-group date" id="endDatePicker" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input"
-                                                   data-target="#datetimepicker3" name="endSchedule"/>
-                                            <div class="input-group-append" data-target="#datetimepicker3"
+                                                   data-target="#endDatePicker" name="endSchedule" id="endSchedule" required/>
+                                            <div class="input-group-append" data-target="#endDatePicker"
                                                  data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="material-icons">
                                                     calendar_today
@@ -406,10 +412,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="col-form-label">일정 종료 시간</label>
-                                        <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+                                        <div class="input-group date" id="endTImePicker" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input"
-                                                   data-target="#datetimepicker4" name="endTime"/>
-                                            <div class="input-group-append" data-target="#datetimepicker4"
+                                                   data-target="#endTImePicker" name="endTime" id="endTime"/>
+                                            <div class="input-group-append" data-target="#endTImePicker"
                                                  data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="material-icons">
                                                     access_time
@@ -419,12 +425,12 @@
                                     </div>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox"  id="inlineCheckbox1" value="option1">
-                                    <label class="form-check-label" for="inlineCheckbox1">매월 반복</label>
+                                    <input class="form-check-input" type="checkbox"  id="repeat_month" value="option1">
+                                    <label class="form-check-label" for="repeat_month">매월 반복</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                    <label class="form-check-label" for="inlineCheckbox2">하루 종일</label>
+                                    <input class="form-check-input" type="checkbox" id="all_day" value="option2">
+                                    <label class="form-check-label" for="all_day">하루 종일</label>
                                 </div>
                             </div>
                         </form>

@@ -24,6 +24,7 @@ public class MonthlyServiceImplTest {
 
     @Test
     public void scheduleMonthlyListTest(){
+
     }
 
     @Test
@@ -39,9 +40,7 @@ public class MonthlyServiceImplTest {
         monthlyDTO.setEndTime("10:14 PM");
         monthlyDTO.setAll_day(false);
         monthlyDTO.setRepeat_month(false);
-
         res = monthlyService.regSchedule(monthlyDTO);
-
         Assert.assertEquals(1,res);
     }
 
@@ -49,9 +48,7 @@ public class MonthlyServiceImplTest {
     public void initCalendarTest(){
         CalendarDTO calendarDTO = new CalendarDTO();
         int res = 0;
-
         res = monthlyService.initCalendar(calendarDTO);
-
 
         Assert.assertNotEquals(0,res);
     }

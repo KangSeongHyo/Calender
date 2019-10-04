@@ -11,6 +11,9 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Monthly 뷰 관련 로직
+ */
 @Service
 public class MonthlyServiceImpl implements MonthlyService{
     private static Logger logger = LoggerFactory.getLogger(MonthlyServiceImpl.class);
@@ -22,13 +25,22 @@ public class MonthlyServiceImpl implements MonthlyService{
     @Resource
     private MonthlyRepo monthlyRepo;
 
+    /**
+     * 스케쥴 등록
+     * @param monthlyDTO
+     * @return
+     */
     @Override
     public int regSchedule(MonthlyDTO monthlyDTO) {
         int res = 0;
+
+        // 날짜 년/월/일, 시간 시/분 시간대 각각 분류로직
         String[] sSchedule = dateParse(monthlyDTO.getStartSchedule());
         String[] eSchedule = dateParse(monthlyDTO.getEndSchedule());
         String[] sTime = timeParse(monthlyDTO.getStartTime());
         String[] eTime = timeParse(monthlyDTO.getEndTime());
+        boolean allDay = monthlyDTO.isAll_day();
+        boolean repeat = monthlyDTO.isRepeat_month();
 
         monthlyDTO.setStart_year(sSchedule[YEAR]);
         monthlyDTO.setStart_month(sSchedule[MONTH]);
@@ -46,13 +58,25 @@ public class MonthlyServiceImpl implements MonthlyService{
         monthlyDTO.setEnd_minute(eTime[MINUTE]);
         monthlyDTO.setEnd_sign(eTime[SIGN]);
 
-        res = monthlyRepo.createSchedule(monthlyDTO);
+        // 매월반복
+        if(repeat){
+            int smonth = Integer.parseInt(monthlyDTO.getStart_month());
+            int emonth = Integer.parseInt(monthlyDTO.getEnd_month());
+
+            for(int i = 0; i+smonth <=12; i++){
+                monthlyDTO.setStart_month(String.format("%02d",smonth+i));
+                monthlyDTO.setEnd_month((String.format("%02d",emonth+i)));
+                monthlyRepo.createSchedule(monthlyDTO);
+            }
+        }else{
+            res = monthlyRepo.createSchedule(monthlyDTO);
+        }
 
         return res;
     }
 
     /**
-     *
+     * 해당 월 스케쥴 목록
      * @param calendarDTO
      * @return
      */
@@ -68,6 +92,11 @@ public class MonthlyServiceImpl implements MonthlyService{
         return resultMap;
     }
 
+    /**
+     * 해당년월 Calendar 테이블 초기화
+     * @param calendarDTO
+     * @return
+     */
     @Override
     public int initCalendar(CalendarDTO calendarDTO) {
         checkYearAndMonth(calendarDTO);
@@ -87,7 +116,7 @@ public class MonthlyServiceImpl implements MonthlyService{
     }
 
     /**
-     *
+     * 스케줄목록 주차별 분류
      * @param scheduleList
      * @param stratDay
      * @return
@@ -119,6 +148,10 @@ public class MonthlyServiceImpl implements MonthlyService{
     }
 
 
+    /**
+     * 현재 년월로 초기화
+     * @param calendarDTO
+     */
     @Override
     public void checkYearAndMonth(CalendarDTO calendarDTO) {
         String month = calendarDTO.getMonth();
@@ -147,7 +180,11 @@ public class MonthlyServiceImpl implements MonthlyService{
         return date.split("\\s|\\:");
     }
 
-
+    /**
+     * 월의 시작날짜
+     * @param calendarDTO
+     * @return
+     */
     @Override
     public int startDayOfMonth(CalendarDTO calendarDTO) {
         int mSum = 0;
@@ -168,6 +205,11 @@ public class MonthlyServiceImpl implements MonthlyService{
 
     }
 
+    /**
+     * 월의 마지막 날짜
+     * @param month
+     * @return
+     */
     @Override
     public int lastDayOfMonth(int month) {
         int last = 0;
@@ -185,6 +227,5 @@ public class MonthlyServiceImpl implements MonthlyService{
 
         return last;
     }
-
 
 }
