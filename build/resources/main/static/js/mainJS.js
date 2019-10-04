@@ -1,11 +1,19 @@
 $(document).ready(function(){
     let year = $("#present").data("year");
     let month = $("#present").data("month");
+    let day = $(".day-daily").text().substr(0,2);
+
+
+    $("#dailyReg").click(function () {
+        $("#startDatePicker").data("datetimepicker").date(month+"/"+day+"/"+year);
+        $("#endDatePicker").data("datetimepicker").date(month+"/"+day+"/"+year);
+    });
 
     $("#next").click(function () {
         let year_parse = parseInt(year);
         let month_parse = parseInt(month);
         month_parse += 1;
+
         if(month_parse==13){
             year_parse += 1;
             month_parse = 1;
@@ -25,6 +33,32 @@ $(document).ready(function(){
         month_parse = $.format(month_parse);
         location.href="?year="+year_parse+"&month="+month_parse;
     });
+   $("#nextDay").click(function () {
+        let month_parse = parseInt(month);
+        let day_parse = parseInt(day);
+        if(day_parse==31){
+            alert("마지막날입니다.")
+            return;
+        }
+        day_parse+=1;
+        month_parse = $.format(month_parse);
+        day_parse = $.format(day_parse);
+        location.href="?year="+year+"&month="+month_parse+"&day="+day_parse;
+    });
+
+    $("#pervDay").click(function () {
+        let month_parse = parseInt(month);
+        let day_parse = parseInt(day);
+
+        if(month==1){
+            alert("첫째날입니다.")
+            return;
+        }
+        day_parse-=1;
+        month_parse = $.format(month_parse);
+        day_parse = $.format(day_parse);
+        location.href="?year="+year+"&month="+month_parse+"&day="+day_parse;
+    });
 
     $("#all_day").click(function () {
 
@@ -39,15 +73,15 @@ $(document).ready(function(){
 
         if(check){
             $("#endDatePicker").data("datetimepicker").date(date);
-            $("#startTime").prop("disabled",true);
-            $("#endTime").prop("disabled",true);
-            $("#startSchedule").prop("disabled",true);
-            $("#endSchedule").prop("disabled",true);
+            $("#startTime").prop("readOnly",true);
+            $("#endTime").prop("readOnly",true);
+            $("#startSchedule").prop("readOnly",true);
+            $("#endSchedule").prop("readOnly",true);
         }else {
-            $("#startTime").prop("disabled",false);
-            $("#endTime").prop("disabled",false);
-            $("#startSchedule").prop("disabled",false);
-            $("#endSchedule").prop("disabled",false);
+            $("#startTime").prop("readOnly",false);
+            $("#endTime").prop("readOnly",false);
+            $("#startSchedule").prop("readOnly",false);
+            $("#endSchedule").prop("readOnly",false);
         }
     });
     

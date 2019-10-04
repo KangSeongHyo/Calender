@@ -1,6 +1,6 @@
-$.format = function (month) {
-    if(month<10){
-        month = "0"+month;
+$.format = function (item) {
+    if(item<10){
+        item = "0"+item;
     }
-    return month;
+    return item;
 }

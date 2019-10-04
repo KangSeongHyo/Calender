@@ -14,7 +14,7 @@ public interface MonthlyService {
     public int startDayOfMonth(CalendarDTO calendarDTO);
     public int lastDayOfMonth(int month);
     public List<CalendarDTO>[] dayOfWeekList(List<CalendarDTO> scheduleList,int stratDay);
-    public void checkYearAndMonth(CalendarDTO calendarDTO);
+    public void checkYearAndMonthAndDay(CalendarDTO calendarDTO);
     public String[] dateParse(String date);
     public String[] timeParse(String date);
 }

@@ -65,4 +65,15 @@ public class CalendarDTO {
     public void setScheduleList(List<MonthlyDTO> scheduleList) {
         this.scheduleList = scheduleList;
     }
+
+    @Override
+    public String toString() {
+        return "CalendarDTO{" +
+                "year='" + year + '\'' +
+                ", month='" + month + '\'' +
+                ", day='" + day + '\'' +
+                ", size=" + size +
+                ", scheduleList=" + scheduleList +
+                '}';
+    }
 }

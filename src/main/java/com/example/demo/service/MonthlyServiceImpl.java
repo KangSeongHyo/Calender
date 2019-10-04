@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Monthly 뷰 관련 로직
+ * Monthly 뷰 서비스 Class
  */
 @Service
 public class MonthlyServiceImpl implements MonthlyService{
@@ -32,23 +32,18 @@ public class MonthlyServiceImpl implements MonthlyService{
      */
     @Override
     public int regSchedule(MonthlyDTO monthlyDTO) {
+        logger.info("regSchedule ={}",monthlyDTO);
+
         int res = 0;
+        boolean allDay = monthlyDTO.isAll_day();
+        boolean repeat = monthlyDTO.isRepeat_month();
 
         // 날짜 년/월/일, 시간 시/분 시간대 각각 분류로직
         String[] sSchedule = dateParse(monthlyDTO.getStartSchedule());
         String[] eSchedule = dateParse(monthlyDTO.getEndSchedule());
-        String[] sTime = timeParse(monthlyDTO.getStartTime());
-        String[] eTime = timeParse(monthlyDTO.getEndTime());
-        boolean allDay = monthlyDTO.isAll_day();
-        boolean repeat = monthlyDTO.isRepeat_month();
 
-        monthlyDTO.setStart_year(sSchedule[YEAR]);
-        monthlyDTO.setStart_month(sSchedule[MONTH]);
-        monthlyDTO.setStart_day(sSchedule[DAY]);
-
-        monthlyDTO.setEnd_year(eSchedule[YEAR]);
-        monthlyDTO.setEnd_month(eSchedule[MONTH]);
-        monthlyDTO.setEnd_day(eSchedule[DAY]);
+        String[] sTime = timeParse(allDay?"12:00 AM":monthlyDTO.getStartTime());
+        String[] eTime = timeParse(allDay?"11:59 PM":monthlyDTO.getEndTime());
 
         monthlyDTO.setStart_hour(sTime[HOUR]);
         monthlyDTO.setStart_minute(sTime[MINUTE]);
@@ -57,6 +52,14 @@ public class MonthlyServiceImpl implements MonthlyService{
         monthlyDTO.setEnd_hour(eTime[HOUR]);
         monthlyDTO.setEnd_minute(eTime[MINUTE]);
         monthlyDTO.setEnd_sign(eTime[SIGN]);
+
+        monthlyDTO.setStart_year(sSchedule[YEAR]);
+        monthlyDTO.setStart_month(sSchedule[MONTH]);
+        monthlyDTO.setStart_day(sSchedule[DAY]);
+
+        monthlyDTO.setEnd_year(eSchedule[YEAR]);
+        monthlyDTO.setEnd_month(eSchedule[MONTH]);
+        monthlyDTO.setEnd_day(eSchedule[DAY]);
 
         // 매월반복
         if(repeat){
@@ -99,7 +102,7 @@ public class MonthlyServiceImpl implements MonthlyService{
      */
     @Override
     public int initCalendar(CalendarDTO calendarDTO) {
-        checkYearAndMonth(calendarDTO);
+        checkYearAndMonthAndDay(calendarDTO);
         int lastDay = lastDayOfMonth(Integer.parseInt(calendarDTO.getMonth()));
 
         if(monthlyRepo.getCountCalender(calendarDTO) == 0){
@@ -124,6 +127,7 @@ public class MonthlyServiceImpl implements MonthlyService{
     @Override
     public List<CalendarDTO>[] dayOfWeekList(List<CalendarDTO> scheduleList,int stratDay) {
         List<CalendarDTO>[] weekList = new ArrayList[5];
+        logger.info("시작날짜 : ",String.valueOf(stratDay));
         int count = stratDay;
         int week = 0;
         int idx = 0;
@@ -153,18 +157,25 @@ public class MonthlyServiceImpl implements MonthlyService{
      * @param calendarDTO
      */
     @Override
-    public void checkYearAndMonth(CalendarDTO calendarDTO) {
+    public void checkYearAndMonthAndDay(CalendarDTO calendarDTO) {
         String month = calendarDTO.getMonth();
         String year = calendarDTO.getYear();
+        String day = calendarDTO.getDay();
 
-        if(month == null ||year == null) {
+        if(month == null && year == null && day == null) {
             Date today = new Date();
             SimpleDateFormat dateFormatYear = new SimpleDateFormat("YYYY");
             SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MM");
+            SimpleDateFormat dateFormatDay = new SimpleDateFormat("dd");
             year = dateFormatYear.format(today);
             month = dateFormatMonth.format(today);
+            day = dateFormatDay.format(today);
             calendarDTO.setYear(year);
             calendarDTO.setMonth(month);
+            calendarDTO.setDay(day);
+        }else if((month!=null)&&(year!=null)&&day==null){
+           // 초기값설정
+            calendarDTO.setDay("01");
         }
 
     }

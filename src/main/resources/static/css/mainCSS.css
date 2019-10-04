@@ -238,5 +238,12 @@ a:hover {
         font-size: 13px; } }
 .modal .form-row .form-check-inline {
     align-items: baseline; }
+.day-daily{
+    padding: 100px;
+}
+.event-all-day{
+    background-color: #b9f1b1 !important;
+}
+
 
 /*# sourceMappingURL=style.css.map */
